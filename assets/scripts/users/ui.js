@@ -4,7 +4,7 @@ const store = require('../store.js')
 
 const signUpSuccess = (data) => {
   console.log(data)
-  $('#sign-up').trigger('reset')
+  $('form').trigger('reset')
   $('#message').text('Sign Up Success')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -18,14 +18,14 @@ const error = (err) => {
 
 const signInSuccess = (data) => {
   Object.assign(store, data)
-  $('#sign-in').trigger('reset')
+  $('form').trigger('reset')
   $('#message').text('Sign In Success')
   $('#message').removeClass()
   $('#message').addClass('success')
 }
 
 const changePasswordSuccess = (data) => {
-  $('#change-password').trigger('reset')
+  $('form').trigger('reset')
   $('#message').text('Change Password Success')
   $('#message').removeClass()
   $('#message').addClass('success')

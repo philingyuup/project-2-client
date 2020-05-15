@@ -14,8 +14,9 @@
     <body>
       <h1>Fridge-Tracker</h1>
       <div id='message'></div>
+      <h2> USER </h2>
         <div>
-          <h2>Sign-Up </h2>
+          <h3>Sign-Up </h3>
             <form id='sign-up'>
               <input required type='text' name='credentials[email]' placeholder='email'>
               <input required type='password' name='credentials[password]' placeholder='password'>
@@ -24,7 +25,7 @@
             </form>
         </div>
         <div>
-          <h2> Sign-In </h2>
+          <h3> Sign-In </h3>
             <form id='sign-in'>
               <input required type='text' name='credentials[email]' placeholder='email'>
               <input required type='password' name='credentials[password]' placeholder='password'>
@@ -32,7 +33,7 @@
             </form>
         </div>
         <div>
-          <h2> Change Password </h2>
+          <h3> Change Password </h3>
             <form id='change-password'>
               <input type='password' name='passwords[old]' placeholder='old password'>
               <input type='password' name='passwords[new]' placeholder='new password'>
@@ -40,8 +41,44 @@
             </form>
         </div>
         <div>
-          <h2> Sign-Out </h2>
+          <h3> Sign-Out </h3>
               <button id='sign-out' type='button'> Sign-Out </button>
+        </div>
+      <h2>ITEM </h2>
+        <div>
+          <h3> Show ALL Items </h3>
+          <button id='index-item'> List All Items </button>
+        </div>
+        <div>
+          <h3> Show Item </h3>
+          <form id='show-item'>
+            <input required type='text' name='id' placeholder='item ID'>
+            <button type='submit'> List Item </button>
+          </form>
+        </div>
+        <div>
+          <h3> Create Item </h3>
+          <form id='create-item'>
+            <input required type='text' name='item[name]' placeholder='item name'>
+            <input type='number' name='item[quantity]' placeholder='item quantity (default: 1)'>
+            <button type='submit'> Create Item </button>
+          </form>
+        </div>
+        <div>
+          <h3> Update Item </h3>
+          <form id='update-item'>
+            <input required type='text' name='id' placeholder='item ID'>
+            <input required type='text' name='item[name]' placeholder='item name'>
+            <input type='number' name='item[quantity]' placeholder='item quantity (default: 1)'>
+            <button type='submit'> Update Item </button>
+          </form>
+        </div>
+        <div>
+          <h3> Delete Item </h3>
+          <form id='delete-item'>
+            <input required type='text' name='id' placeholder='item ID'>
+            <button type='submit'> Delete Item </button>
+          </form>
         </div>
     </body>
 </html>
