@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Fridge-Tracker</h1>
+      <div id='message'></div>
+        <div>
+          <h2>Sign-Up </h2>
+            <form id='sign-up'>
+              <input required type='text' name='credentials[email]' placeholder='email'>
+              <input required type='password' name='credentials[password]' placeholder='password'>
+              <input required type='password' name='credentials[password_confirmation]' placeholder='confirm password'>
+              <button type='submit'> Sign Up </button>
+            </form>
+        </div>
+        <div>
+          <h2> Sign-In </h2>
+            <form id='sign-in'>
+              <input required type='text' name='credentials[email]' placeholder='email'>
+              <input required type='password' name='credentials[password]' placeholder='password'>
+              <button type='submit'> Sign In </button>
+            </form>
+        </div>
+        <div>
+          <h2> Change Password </h2>
+            <form id='change-password'>
+              <input type='password' name='passwords[old]' placeholder='old password'>
+              <input type='password' name='passwords[new]' placeholder='new password'>
+              <button type='submit'> Change Password </button>
+            </form>
+        </div>
+        <div>
+          <h2> Sign-Out </h2>
+              <button id='sign-out' type='button'> Sign-Out </button>
+        </div>
+    </body>
+</html>
