@@ -1,3 +1,13 @@
+$primary: lighten(#98D8C6, 10%);
+$light-primary: lighten(#98D8C6, 21%);
+$off-primary: #5BC9AC;
+$alt: lighten(#E6D72A, 5%);
+$off-alt: #F18D9E;
+%title-color {
+  color: $off-alt;
+  text-shadow: 2px 1px darken(grey, 10%);
+}
+
 @import '~bootstrap/scss/bootstrap';
 
 .success {
@@ -6,4 +16,110 @@
 
 .failure {
   color: red;
+}
+
+#small-logo {
+  height: 58px;
+}
+
+.unauthenticated {
+  display: none;
+}
+
+
+.btn {
+  background-color: $alt;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  border: 1px solid darken($off-primary, 25%);
+  box-shadow: 2px 2px grey;
+  margin: 5px 2px;
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px black;
+  }
+}
+
+input {
+  margin: 3px 1px;
+}
+
+.navButton {
+  background: $off-primary;
+  border: 0px solid white;
+  padding: 0;
+  border-radius: 11px;
+  box-shadow: 1px 1px darken($off-primary, 30%);
+}
+
+.navbar-brand > h1 {
+  display: inline;
+  font-family: 'Lobster', cursive;
+  padding: 0;
+  @extend %title-color;
+  font-size: 45px;
+}
+
+h3 {
+  color: darken($off-alt, 10%);
+  text-shadow: 1px 1px lighten(grey, 20%);
+  padding-top: 5px;
+}
+
+.navbar {
+  background: $primary;
+}
+
+.modal-header {
+  background-color: $off-primary;
+
+  .modal-title {
+    font-family: 'Lobster', cursive;
+    @extend %title-color;
+    font-size: 35px;
+  }
+}
+
+.modal-body {
+  background-color: $light-primary;
+}
+
+.modal-footer {
+  background-color: $primary;
+}
+
+.nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 21px;
+  color: darken($off-alt, 10%);
+  text-shadow: 1px 1px lighten(grey, 20%);
+}
+
+small {
+  font-family: 'Montserrat', sans-serif;
+}
+
+main {
+  background: $light-primary;
+  height: 100vh;
+  padding-left: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input[type=text], input[type=password], input[type=number]{
+  width: 50%;
+  border: 1px solid grey;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px $off-primary;
+
+  &:focus {
+    box-shadow: 3px 3px 4px darken($off-primary, 20%);
+  }
+}
+
+label {
+  font-weight: bold;
+  color: black;
 }

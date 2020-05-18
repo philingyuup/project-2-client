@@ -5,6 +5,7 @@ const store = require('../store.js')
 const signUpSuccess = (data) => {
   console.log(data)
   $('form').trigger('reset')
+  $('#signUpModal').modal('hide')
   $('#message').text('Sign Up Success')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -22,6 +23,9 @@ const signInSuccess = (data) => {
   $('#message').text('Sign In Success')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('.navButton').show()
+  $('.nav-link').show()
+  $('#sign-in-section').hide()
 }
 
 const changePasswordSuccess = (data) => {
@@ -36,6 +40,9 @@ const signOutSuccess = () => {
   $('#message').text('Sign Out Success')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('.unauthenticated').hide()
+  $('.navbar-collapse').removeClass('show')
+  $('#sign-in-section').show()
 }
 
 module.exports = {

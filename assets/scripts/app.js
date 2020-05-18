@@ -10,6 +10,14 @@ const itemEvents = require('./items/events.js')
 // require('./example')
 
 $(() => {
+  $('#items-link').on('click', function () {
+    $('#items').show()
+    $('#settings').hide()
+  })
+  $('#settings-link').on('click', function () {
+    $('#settings').show()
+    $('#items').hide()
+  })
   userEvents.addHandlers()
   itemEvents.addHandlers()
 })

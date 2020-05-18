@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Fridge-Tracker</h1>
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap');
+    </style>
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">
+        <h1>FridgePal</h1>
+      </a>
+      <button class="navbar-toggler navButton unauthenticated" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img id='small-logo' src='./assets/logo/FridgePal-BlankIcon.png' alt='FridgePalLogo'>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a id='items-link' class="nav-link unauthenticated" href="#items">Items</a>
+          </li>
+          <li class="nav-item">
+            <a id='settings-link' class="nav-link unauthenticated" href="#settings">Settings</a>
+          </li>
+          <li class='nav-item'>
+            <a href='#' class='nav-link unauthenticated' id='sign-out'> Sign Out </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
       <div id='message'></div>
-      <h2> USER </h2>
-        <div>
-          <h3>Sign-Up </h3>
-            <form id='sign-up'>
-              <input required type='text' name='credentials[email]' placeholder='email'>
-              <input required type='password' name='credentials[password]' placeholder='password'>
-              <input required type='password' name='credentials[password_confirmation]' placeholder='confirm password'>
-              <button type='submit'> Sign Up </button>
+      <div id='sign-in-section'>
+        <h3> Sign-In </h3>
+          <form id='sign-in'>
+            <input required class='col-6' type='text' name='credentials[email]' placeholder='email'>
+            <input required class='col-6' type='password' name='credentials[password]' placeholder='password'>
+            <br>
+            <button class='btn' type='submit'> Sign In </button>
+            <button class='btn' type='button' data-toggle='modal' data-target='#signUpModal'> Sign Up </button>
+            <small class="form-text text-muted">No Account? Signup for free!</small>
+          </form>
+      </div>
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="sign-up">
+              <div class="modal-body">
+                <input required class='col' aria-describedby="emailHelp" name="credentials[email]" type="text" placeholder="you@example.com">
+                <small id="emailHelp" class="form-text text-muted">Please don't use a real email!</small>
+                <input required class='col' aria-describedby="passwordHelp" name="credentials[password]" type="password" placeholder="password">
+                <small id="passwordHelp" class="form-text text-muted">Please don't use a real password!</small>
+                <input required class='col' name="credentials[password_confirmation]" type="password" placeholder="confirm password">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn">Sign Up</button>
+              </div>
             </form>
+          </div>
         </div>
-        <div>
-          <h3> Sign-In </h3>
-            <form id='sign-in'>
-              <input required type='text' name='credentials[email]' placeholder='email'>
-              <input required type='password' name='credentials[password]' placeholder='password'>
-              <button type='submit'> Sign In </button>
-            </form>
-        </div>
-        <div>
-          <h3> Change Password </h3>
-            <form id='change-password'>
-              <input type='password' name='passwords[old]' placeholder='old password'>
-              <input type='password' name='passwords[new]' placeholder='new password'>
-              <button type='submit'> Change Password </button>
-            </form>
-        </div>
-        <div>
-          <h3> Sign-Out </h3>
-              <button id='sign-out' type='button'> Sign-Out </button>
-        </div>
-      <h2>ITEM </h2>
+      </div>
+      <div class='unauthenticated' id='settings'>
+        <h3> Change Password </h3>
+          <form id='change-password'>
+            <input required class='col-6' type='password' name='passwords[old]' placeholder='old password'>
+            <input required class='col-6' type='password' name='passwords[new]' placeholder='new password'>
+            <br>
+            <button class='btn' type='submit'> Change Password </button>
+          </form>
+      </div>
+      <div class='unauthenticated' id='items'>
         <div>
           <h3> Show ALL Items </h3>
-          <button id='index-item'> List All Items </button>
+          <button class='btn' id='index-item'> List All Items </button>
         </div>
         <div>
           <h3> Show Item </h3>
           <form id='show-item'>
             <input required type='text' name='id' placeholder='item ID'>
-            <button type='submit'> List Item </button>
+            <br>
+            <button class='btn' type='submit'> List Item </button>
           </form>
         </div>
         <div>
@@ -61,7 +99,8 @@
           <form id='create-item'>
             <input required type='text' name='item[name]' placeholder='item name'>
             <input type='number' name='item[quantity]' placeholder='item quantity (default: 1)'>
-            <button type='submit'> Create Item </button>
+            <br>
+            <button class='btn' type='submit'> Create Item </button>
           </form>
         </div>
         <div>
@@ -70,15 +109,19 @@
             <input required type='text' name='id' placeholder='item ID'>
             <input required type='text' name='item[name]' placeholder='item name'>
             <input type='number' name='item[quantity]' placeholder='item quantity (default: 1)'>
-            <button type='submit'> Update Item </button>
+            <br>
+            <button class='btn' type='submit'> Update Item </button>
           </form>
         </div>
         <div>
           <h3> Delete Item </h3>
           <form id='delete-item'>
             <input required type='text' name='id' placeholder='item ID'>
-            <button type='submit'> Delete Item </button>
+            <br>
+            <button class='btn' type='submit'> Delete Item </button>
           </form>
         </div>
-    </body>
+      </div>
+    </main>
+  </body>
 </html>
