@@ -4483,16 +4483,16 @@ var indexItem = function indexItem() {
     }
   });
 };
-
-var showItem = function showItem(id) {
-  return $.ajax({
-    url: config.apiUrl + '/items/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    }
-  });
-};
+//
+// const showItem = id => {
+//   return $.ajax({
+//     url: config.apiUrl + '/items/' + id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Bearer ' + store.user.token
+//     }
+//   })
+// }
 
 var createItem = function createItem(data) {
   return $.ajax({
@@ -4528,7 +4528,7 @@ var deleteItem = function deleteItem(id) {
 
 module.exports = {
   indexItem: indexItem,
-  showItem: showItem,
+  // showItem,
   createItem: createItem,
   updateItem: updateItem,
   deleteItem: deleteItem
@@ -17305,7 +17305,6 @@ module.exports = {
 var store = __webpack_require__(56);
 
 var signUpSuccess = function signUpSuccess(data) {
-  console.log(data);
   $('form').trigger('reset');
   $('#signUpModal').modal('hide');
   $('#message').text('Sign Up Success');
@@ -17433,7 +17432,7 @@ var deleteItem = function deleteItem(event) {
 
 var addHandlers = function addHandlers() {
   $('#index-item').on('click', indexItem);
-  $('#show-item').on('submit', showItem);
+  // $('#show-item').on('submit', showItem)
   $('#create-item').on('submit', createItem);
   $('#update-item').on('submit', updateItem);
   $('#delete-item').on('submit', deleteItem);
@@ -17480,13 +17479,13 @@ var error = function error(err) {
   $('#message').removeClass();
   $('#message').addClass('failure');
 };
-
-var showItemSuccess = function showItemSuccess(data) {
-  $('form').trigger('reset');
-  $('#message').text('Show Item Success');
-  $('#message').removeClass();
-  $('#message').addClass('success');
-};
+//
+// const showItemSuccess = (data) => {
+//   $('form').trigger('reset')
+//   $('#message').text('Show Item Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+// }
 
 var createItemSuccess = function createItemSuccess(singleData) {
   api.indexItem().then(function (data) {
@@ -17520,7 +17519,7 @@ var deleteItemSuccess = function deleteItemSuccess() {
 module.exports = {
   error: error,
   indexItemSuccess: indexItemSuccess,
-  showItemSuccess: showItemSuccess,
+  // showItemSuccess,
   createItemSuccess: createItemSuccess,
   updateItemSuccess: updateItemSuccess,
   deleteItemSuccess: deleteItemSuccess
