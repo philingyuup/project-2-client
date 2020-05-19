@@ -24,13 +24,13 @@ const error = (err) => {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
-
-const showItemSuccess = (data) => {
-  $('form').trigger('reset')
-  $('#message').text('Show Item Success')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-}
+//
+// const showItemSuccess = (data) => {
+//   $('form').trigger('reset')
+//   $('#message').text('Show Item Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+// }
 
 const createItemSuccess = (singleData) => {
   api.indexItem()
@@ -64,7 +64,7 @@ const deleteItemSuccess = () => {
 module.exports = {
   error,
   indexItemSuccess,
-  showItemSuccess,
+  // showItemSuccess,
   createItemSuccess,
   updateItemSuccess,
   deleteItemSuccess

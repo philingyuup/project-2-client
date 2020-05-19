@@ -45,7 +45,7 @@ const deleteItem = event => {
 
 const addHandlers = () => {
   $('#index-item').on('click', indexItem)
-  $('#show-item').on('submit', showItem)
+  // $('#show-item').on('submit', showItem)
   $('#create-item').on('submit', createItem)
   $('#update-item').on('submit', updateItem)
   $('#delete-item').on('submit', deleteItem)

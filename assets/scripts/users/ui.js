@@ -3,7 +3,6 @@
 const store = require('../store.js')
 
 const signUpSuccess = (data) => {
-  console.log(data)
   $('form').trigger('reset')
   $('#signUpModal').modal('hide')
   $('#message').text('Sign Up Success')

@@ -12,16 +12,16 @@ const indexItem = () => {
     }
   })
 }
-
-const showItem = id => {
-  return $.ajax({
-    url: config.apiUrl + '/items/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    }
-  })
-}
+//
+// const showItem = id => {
+//   return $.ajax({
+//     url: config.apiUrl + '/items/' + id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Bearer ' + store.user.token
+//     }
+//   })
+// }
 
 const createItem = data => {
   return $.ajax({
@@ -57,7 +57,7 @@ const deleteItem = id => {
 
 module.exports = {
   indexItem,
-  showItem,
+  // showItem,
   createItem,
   updateItem,
   deleteItem
