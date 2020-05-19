@@ -1,0 +1,21 @@
+<table class="table" id='tableContent'>
+  <thead>
+    <tr>
+      <th class='col-4'>Name</th>
+      <th class='col-3'>Qty #</th>
+      <th class='col-3'>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items as |item|}}
+      <tr data-toggle='collapse' data-target='#{{item._id}}' data-parent='#tableContent'>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{limit item.updatedAt 10}}</td>
+      </tr>
+      <tr class='hiddenRow'>
+        <td colspan='3'><div id='{{item._id}}' class='collapse'> ID: {{item._id}} </div> </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

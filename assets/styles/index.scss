@@ -119,7 +119,37 @@ input[type=text], input[type=password], input[type=number]{
   }
 }
 
+#update-item input {
+  width: 30%;
+}
+
+
 label {
   font-weight: bold;
   color: black;
+}
+
+table {
+
+  margin-left: -4px;
+
+  th {
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    color: darken($off-alt, 10%);
+    text-shadow: 1px 1px black;
+    background-color: lighten($off-primary,10%);
+  }
+
+  tr:nth-child(2n) {
+    background-color: $primary;
+  }
+
+  tr:nth-child(2n+1) {
+    background-color: $light-primary;
+  }
+
+  .hiddenRow {
+    padding: 0;
+  }
 }

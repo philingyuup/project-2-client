@@ -1,9 +1,19 @@
 'use strict'
 
 const store = require('../store.js')
+const indexTemplate = require ('./../templates/items-listing.handlebars')
+const api = require('./api.js')
+
+const appendTable = data => {
+  const indexItems = indexTemplate({items: data.items})
+  $('#display').html(indexItems)
+  $('#tableContent tbody').on('click', 'tr', function () {
+    $($(this).data('target')).collapse('toggle')
+  })
+}
 
 const indexItemSuccess = (data) => {
-  console.log(data)
+  appendTable(data)
   $('#message').text('Index Success')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -16,15 +26,16 @@ const error = (err) => {
 }
 
 const showItemSuccess = (data) => {
-  console.log(data)
   $('form').trigger('reset')
   $('#message').text('Show Item Success')
   $('#message').removeClass()
   $('#message').addClass('success')
 }
 
-const createItemSuccess = (data) => {
-  console.log(data)
+const createItemSuccess = (singleData) => {
+  api.indexItem()
+    .then(data => appendTable(data))
+    .catch(error)
   $('form').trigger('reset')
   $('#message').text('Create Item Success')
   $('#message').removeClass()
@@ -32,12 +43,19 @@ const createItemSuccess = (data) => {
 }
 
 const updateItemSuccess = () => {
+  api.indexItem()
+    .then(data => appendTable(data))
+    .catch(error)
+  $('form').trigger('reset')
   $('#message').text('Update Item Success')
   $('#message').removeClass()
   $('#message').addClass('success')
 }
 
 const deleteItemSuccess = () => {
+  api.indexItem()
+    .then(data => appendTable(data))
+    .catch(error)
   $('#message').text('Delete Item Success')
   $('#message').removeClass()
   $('#message').addClass('success')

@@ -49,6 +49,11 @@ const addHandlers = () => {
   $('#create-item').on('submit', createItem)
   $('#update-item').on('submit', updateItem)
   $('#delete-item').on('submit', deleteItem)
+  $('#items-link').on('click', function () {
+    $('#items').show()
+    $('#settings').hide()
+    $('.navbar-collapse').removeClass('show')
+  })
 }
 
 module.exports = {

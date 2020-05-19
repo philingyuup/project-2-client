@@ -41,6 +41,11 @@ const addHandlers = () => {
   $('#sign-in').on('submit', signIn)
   $('#change-password').on('submit', changePassword)
   $('#sign-out').on('click', signOut)
+  $('#settings-link').on('click', function () {
+    $('#settings').show()
+    $('#items').hide()
+    $('.navbar-collapse').removeClass('show')
+  })
 }
 
 module.exports = {
