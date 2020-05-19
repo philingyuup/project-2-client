@@ -4083,7 +4083,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 
 var apiUrl = void 0;
 var apiUrls = {
-  production: 'https://mysterious-dawn-86601.herokuapp.com/',
+  production: 'https://mysterious-dawn-86601.herokuapp.com',
   development: 'http://localhost:4741'
 };
 
