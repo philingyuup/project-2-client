@@ -18718,21 +18718,21 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "          <tr>\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "          <tr>\r\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(__default(__webpack_require__(373)).call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1),10,{"name":"limit","hash":{},"data":data,"blockParams":blockParams,"loc":{"start":{"line":14,"column":89},"end":{"line":14,"column":111}}}))
-    + "</td>\n            <td>"
+    + "</td>\r\n            <td>"
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"items") : stack1)) != null ? lookupProperty(stack1,"length") : stack1), depth0))
-    + "</td>\n            <td> <button class='btn showListButton' data-id='"
+    + "</td>\r\n            <td> <button class='btn showListButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> Show </button></td>\n            <td> <button class='btn deleteButton' data-id='"
+    + "'> Show </button></td>\r\n            <td> <button class='btn deleteButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> &times; </button></td>\n          </tr>\n          <tr class='hiddenRow collapse' id='"
+    + "'> &times; </button></td>\r\n          </tr>\r\n          <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\n            <td colspan='4'><div> Full Name: "
+    + "'>\r\n            <td colspan='4'><div> Full Name: "
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </div> </td>\n          </tr>\n";
+    + " </div> </td>\r\n          </tr>\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -18741,9 +18741,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "<h3 class='singleListHeader'> All Lists </h3>\n  <table class=\"table\" id='listTable'>\n    <thead>\n      <tr>\n        <th class='col-4'>Name</th>\n        <th class='col-3'>Items#</th>\n        <th class='col'> </th>\n        <th class='col'> </th>\n      </tr>\n    </thead>\n    <tbody>\n"
+  return "<h3 class='singleListHeader'> All Lists </h3>\r\n  <table class=\"table\" id='listTable'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Name</th>\r\n        <th class='col-3'>Items#</th>\r\n        <th class='col'> </th>\r\n        <th class='col'> </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"lists") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":12,"column":6},"end":{"line":22,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\n  </table>\n  <h3> Create List </h3>\n  <form id='create-list'>\n    <input required type='text' name='list[name]' placeholder='name'>\n    <br>\n    <button class='btn' type='submit'> Create List </button>\n  </form>\n";
+    + "    </tbody>\r\n  </table>\r\n  <h3> Create List </h3>\r\n  <form id='create-list'>\r\n    <input required type='text' name='list[name]' placeholder='name'>\r\n    <br>\r\n    <button class='btn' type='submit'> Create List </button>\r\n  </form>\r\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
