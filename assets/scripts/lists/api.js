@@ -3,9 +3,9 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const indexItem = () => {
+const indexList = () => {
   return $.ajax({
-    url: config.apiUrl + '/items',
+    url: config.apiUrl + '/lists',
     method: 'GET',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -13,9 +13,19 @@ const indexItem = () => {
   })
 }
 
-const showItem = data => {
+const showList = id => {
   return $.ajax({
-    url: config.apiUrl + '/items/name',
+    url: config.apiUrl + '/lists/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+const createList = data => {
+  return $.ajax({
+    url: config.apiUrl + '/lists',
     method: 'POST',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -24,20 +34,9 @@ const showItem = data => {
   })
 }
 
-const createItem = data => {
+const updateList = data => {
   return $.ajax({
-    url: config.apiUrl + '/items',
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    },
-    data: data
-  })
-}
-
-const updateItem = data => {
-  return $.ajax({
-    url: config.apiUrl + '/items/' + data.id,
+    url: config.apiUrl + '/lists/' + data.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -46,9 +45,9 @@ const updateItem = data => {
   })
 }
 
-const deleteItem = id => {
+const deleteList = id => {
   return $.ajax({
-    url: config.apiUrl + '/items/' + id,
+    url: config.apiUrl + '/lists/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -57,9 +56,9 @@ const deleteItem = id => {
 }
 
 module.exports = {
-  indexItem,
-  showItem,
-  createItem,
-  updateItem,
-  deleteItem
+  indexList,
+  showList,
+  createList,
+  updateList,
+  deleteList
 }

@@ -3,7 +3,6 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
-const store = require('../store.js')
 
 const signUp = (event) => {
   event.preventDefault()
@@ -36,16 +35,20 @@ const signOut = event => {
     .catch(ui.error)
 }
 
+const oneActive = function () {
+  $('#listDisplay').html('')
+  $('#settings').show()
+  $('#items').hide()
+  $('#lists').hide()
+  $('.navbar-collapse').removeClass('show')
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', signUp)
   $('#sign-in').on('submit', signIn)
   $('#change-password').on('submit', changePassword)
   $('#sign-out').on('click', signOut)
-  $('#settings-link').on('click', function () {
-    $('#settings').show()
-    $('#items').hide()
-    $('.navbar-collapse').removeClass('show')
-  })
+  $('#settings-link').on('click', oneActive)
 }
 
 module.exports = {

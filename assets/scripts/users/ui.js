@@ -36,9 +36,11 @@ const changePasswordSuccess = (data) => {
 
 const signOutSuccess = () => {
   delete store.user
+  delete store.list
   $('#message').text('Sign Out Success')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#listDisplay').html('')
   $('.unauthenticated').hide()
   $('.navbar-collapse').removeClass('show')
   $('#sign-in-section').show()

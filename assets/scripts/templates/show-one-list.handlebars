@@ -1,0 +1,37 @@
+<h3 class='singleListHeader'> {{list.name}} </h3>
+  <table class="table" id='listOneTable'>
+    <thead>
+      <tr>
+        <th class='col-4'>Item Name</th>
+        <th class='col-3'>Qty#</th>
+        <th class='col'> </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each list.items as |item|}}
+          <tr>
+            <td class='clickCollapse' data-toggle='collapse' data-target='#{{item._id}}'>{{item.name}}</td>
+            <td>{{item.quantity}}</td>
+            <td><button data-id='{{item._id}}' data-quantity='{{item.quantity}}' class='btn reduceOneButton'>-1</button></td>
+          </tr>
+          <tr class='hiddenRow collapse' id='{{item._id}}'>
+            <td colspan='2'>
+              <form id='update-item' data-id='{{item._id}}'>
+                <input type='number' name='item[quantity]' placeholder='qty (default: 1)'>
+                <button class='btn' type='submit'> Update # </button>
+              </form>
+            </td>
+            <td colspan='1'>
+              <button class='btn deleteItemButton' data-id='{{item._id}}'> &times; </button>
+            </td>
+          </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <h3> Create Item </h3>
+    <form id='create-item'>
+      <input required type='text' name='item[name]' placeholder='name'>
+      <input type='number' name='item[quantity]' placeholder='quantity (default: 1)'>
+      <br>
+      <button class='btn' type='submit'> Create Item </button>
+    </form>

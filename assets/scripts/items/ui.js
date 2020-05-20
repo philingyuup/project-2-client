@@ -1,15 +1,11 @@
 'use strict'
 
-const store = require('../store.js')
-const indexTemplate = require ('./../templates/items-listing.handlebars')
-const api = require('./api.js')
+const indexTemplate = require('./../templates/items-listing.handlebars')
+// const api = require('./api.js')
 
 const appendTable = data => {
   const indexItems = indexTemplate({items: data.items})
-  $('#display').html(indexItems)
-  $('#tableContent tbody').on('click', 'tr', function () {
-    $($(this).data('target')).collapse('toggle')
-  })
+  $('#listDisplay').html(indexItems)
 }
 
 const indexItemSuccess = (data) => {
@@ -24,18 +20,16 @@ const error = (err) => {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
-//
-// const showItemSuccess = (data) => {
-//   $('form').trigger('reset')
-//   $('#message').text('Show Item Success')
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-// }
+
+const showItemSuccess = (data) => {
+  appendTable(data)
+  $('form').trigger('reset')
+  $('#message').text('Show Item Success')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+}
 
 const createItemSuccess = (singleData) => {
-  api.indexItem()
-    .then(data => appendTable(data))
-    .catch(error)
   $('form').trigger('reset')
   $('#message').text('Create Item Success')
   $('#message').removeClass()
@@ -43,9 +37,6 @@ const createItemSuccess = (singleData) => {
 }
 
 const updateItemSuccess = () => {
-  api.indexItem()
-    .then(data => appendTable(data))
-    .catch(error)
   $('form').trigger('reset')
   $('#message').text('Update Item Success')
   $('#message').removeClass()
@@ -53,9 +44,6 @@ const updateItemSuccess = () => {
 }
 
 const deleteItemSuccess = () => {
-  api.indexItem()
-    .then(data => appendTable(data))
-    .catch(error)
   $('#message').text('Delete Item Success')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -64,7 +52,7 @@ const deleteItemSuccess = () => {
 module.exports = {
   error,
   indexItemSuccess,
-  // showItemSuccess,
+  showItemSuccess,
   createItemSuccess,
   updateItemSuccess,
   deleteItemSuccess

@@ -1,21 +1,22 @@
-<table class="table" id='tableContent'>
-  <thead>
-    <tr>
-      <th class='col-4'>Name</th>
-      <th class='col-3'>Qty #</th>
-      <th class='col-3'>Last Updated</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each items as |item|}}
-      <tr data-toggle='collapse' data-target='#{{item._id}}' data-parent='#tableContent'>
-        <td>{{item.name}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{limit item.updatedAt 10}}</td>
+<h3 class='singleListHeader'> Items </h3>
+  <table class="table" id='tableContent'>
+    <thead>
+      <tr>
+        <th class='col-4'>Name</th>
+        <th class='col-3'>Qty#</th>
+        <th class='col-3'></th>
       </tr>
-      <tr class='hiddenRow'>
-        <td colspan='3'><div id='{{item._id}}' class='collapse'> ID: {{item._id}} </div> </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each items as |item|}}
+        <tr>
+          <td class='clickCollapse' data-toggle='collapse' data-target='#{{item._id}}'>{{item.name}}</td>
+          <td>{{item.quantity}}</td>
+          <td><button class='btn showListButton' data-id='{{item.list.id}}'> List </button></td>
+        </tr>
+        <tr class='hiddenRow collapse' id='{{item._id}}'>
+          <td colspan='3'><div > List: {{item.list.name}} </div> </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>

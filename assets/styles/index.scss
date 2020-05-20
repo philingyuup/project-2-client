@@ -40,6 +40,31 @@ $off-alt: #F18D9E;
     transform: translate(1px, 1px);
     box-shadow: 1px 1px black;
   }
+
+  &:hover {
+    color: white;
+  }
+}
+
+.showListButton, .reduceOneButton {
+  margin: -6px 0 0 0;
+}
+
+.deleteButton, .deleteItemButton{
+  background-color: lighten(red, 10%);
+  color: white;
+  margin: -6px 0 0 0;
+  line-height: 1.428571429;
+  line-width: 1.428571429;
+  border-radius: 50%;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.deleteItemButton {
+  margin: 5px 2px;
 }
 
 input {
@@ -66,6 +91,11 @@ h3 {
   color: darken($off-alt, 10%);
   text-shadow: 1px 1px lighten(grey, 20%);
   padding-top: 5px;
+}
+
+.singleListHeader {
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
 }
 
 .navbar {
@@ -103,7 +133,7 @@ small {
 
 main {
   background: $light-primary;
-  height: 100vh;
+  min-height: 100vh;
   padding-left: 8px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -120,7 +150,7 @@ input[type=text], input[type=password], input[type=number]{
 }
 
 #update-item input {
-  width: 30%;
+  width: 50%;
 }
 
 

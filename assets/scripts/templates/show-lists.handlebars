@@ -1,0 +1,24 @@
+<h3 class='singleListHeader'> All Lists </h3>
+  <table class="table" id='listTable'>
+    <thead>
+      <tr>
+        <th class='col-4'>Name</th>
+        <th class='col-3'>Items#</th>
+        <th class='col'> </th>
+        <th class='col'> </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each lists as |list|}}
+          <tr>
+            <td class='clickCollapse' data-toggle='collapse' data-target='#{{list._id}}'>{{limit list.name 10}}</td>
+            <td>{{list.items.length}}</td>
+            <td> <button class='btn showListButton' data-id='{{list._id}}'> Show </button></td>
+            <td> <button class='btn deleteButton' data-id='{{list._id}}'> &times; </button></td>
+          </tr>
+          <tr class='hiddenRow collapse' id='{{list._id}}'>
+            <td colspan='4'><div> Full Name: {{list.name}} </div> </td>
+          </tr>
+      {{/each}}
+    </tbody>
+  </table>
