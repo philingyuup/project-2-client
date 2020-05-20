@@ -81,13 +81,13 @@ const collapse = function () {
 
 const addHandlers = () => {
   $('#index-list').on('click', indexList)
-  $('#create-list').on('submit', createList)
   $('#update-list').on('submit', updateList)
   $('#lists-link').on('click', oneActive)
   $('#listDisplay').on('click', '.showListButton', showList)
   $('#listDisplay').on('click', '.reduceOneButton', reduceOne)
   $('#listDisplay').on('click', '.clickCollapse', collapse)
   $('#listDisplay').on('click', '.deleteButton', deleteList)
+  $('#listDisplay').on('submit', '#create-list', createList)
 }
 
 module.exports = {
