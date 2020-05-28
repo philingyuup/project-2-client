@@ -3,6 +3,7 @@
 const indexTemplate = require('./../templates/items-listing.handlebars')
 // const api = require('./api.js')
 
+// used for index items (show all)
 const appendTable = data => {
   const indexItems = indexTemplate({items: data.items})
   $('#listDisplay').html(indexItems)
@@ -22,6 +23,7 @@ const error = (err) => {
 }
 
 const showItemSuccess = (data) => {
+  // show item (show one)
   appendTable(data)
   $('form').trigger('reset')
   $('#message').text('Show Item Success')

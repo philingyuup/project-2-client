@@ -35,6 +35,7 @@ const signOut = event => {
     .catch(ui.error)
 }
 
+// ensures my navbar only has one active link at a time
 const oneActive = function () {
   $('#listDisplay').html('')
   $('#settings').show()
@@ -46,6 +47,7 @@ const oneActive = function () {
 const addHandlers = () => {
   $('#sign-up').on('submit', signUp)
   $('#sign-in').on('submit', signIn)
+  // event delegation for handlebar bubbling
   $('#change-password').on('submit', changePassword)
   $('#sign-out').on('click', signOut)
   $('#settings-link').on('click', oneActive)

@@ -27,6 +27,7 @@ const createItem = function (event) {
   const form = getFormFields(event.target)
   form.item.list = store.list.id
   api.createItem(form)
+    // refreshes content after a successful create item
     .then((data) => listApi.showList(data.item.list))
     .then(listUi.showListSuccess)
     .catch(ui.error)
@@ -37,6 +38,7 @@ const updateItem = function (event) {
   const form = getFormFields(event.target)
   form.id = $(this).data('id')
   api.updateItem(form)
+    // refreshes content after a successful update item
     .then((data) => listApi.showList(store.list.id))
     .then(listUi.showListSuccess)
     .then(ui.updateItemSuccess)
@@ -46,12 +48,14 @@ const updateItem = function (event) {
 const deleteItem = function (event) {
   event.preventDefault()
   api.deleteItem($(this).data('id'))
+    // refreshes content after a successful create item
     .then((data) => listApi.showList(store.list.id))
     .then(listUi.showListSuccess)
     .then(ui.deleteItemSuccess)
     .catch(ui.error)
 }
 
+// ensures only one active link in navbar
 const oneActive = function () {
   indexItem()
   $('#items').show()

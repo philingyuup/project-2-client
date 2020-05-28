@@ -17,6 +17,7 @@ const error = (err) => {
 }
 
 const signInSuccess = (data) => {
+  // stores log in data (especially token) in local js
   Object.assign(store, data)
   $('form').trigger('reset')
   $('#message').text('Sign In Success')

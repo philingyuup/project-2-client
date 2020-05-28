@@ -7,6 +7,7 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const itemApi = require('../items/api.js')
 const itemUi = require('../items/ui.js')
 
+// show all
 const indexList = () => {
   event.preventDefault()
   api.indexList()
@@ -14,6 +15,7 @@ const indexList = () => {
     .catch(ui.error)
 }
 
+// show one
 const showList = function (event) {
   event.preventDefault()
   oneActive()
@@ -22,6 +24,7 @@ const showList = function (event) {
     .catch(ui.error)
 }
 
+// makes a new list
 const createList = event => {
   event.preventDefault()
   const form = getFormFields(event.target)
@@ -30,6 +33,7 @@ const createList = event => {
     .catch(ui.error)
 }
 
+// updates list
 const updateList = event => {
   event.preventDefault()
   const form = getFormFields(event.target)
@@ -38,12 +42,14 @@ const updateList = event => {
     .catch(ui.error)
 }
 
+// deletes list
 const deleteList = function (event) {
   api.deleteList($(this).data('id'))
     .then(ui.deleteListSuccess)
     .catch(ui.error)
 }
 
+// ensures my navbar only has one active link at a time
 const oneActive = function () {
   indexList()
   $('#lists').show()
@@ -52,15 +58,18 @@ const oneActive = function () {
   $('.navbar-collapse').removeClass('show')
 }
 
+// makes a hardcoded call to API to update product quantity by minus one.
 const reduceOne = function (event) {
   event.preventDefault()
   const num = $(this).data('quantity')
+  // hard code for minus one on a certain quantity
   const data = {
     'id': $(this).data('id'),
     'item': {
       'quantity': num - 1
     }
   }
+  // condition check to see if we are reducing an item quantity past 0
   if (num > 0) {
     itemApi.updateItem(data)
       .then(() => api.showList(store.list.id))
@@ -74,6 +83,7 @@ const reduceOne = function (event) {
   }
 }
 
+// handlebar table collapse feature
 const collapse = function () {
   event.preventDefault()
   $($(this).data('target')).collapse('toggle')

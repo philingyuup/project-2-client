@@ -5,11 +5,13 @@ const indexTemplate = require('./../templates/show-lists.handlebars')
 const showTemplate = require('./../templates/show-one-list.handlebars')
 const api = require('./api.js')
 
+// used during index list
 const appendTable = data => {
   const indexLists = indexTemplate({lists: data.lists})
   $('#listDisplay').html(indexLists)
 }
 
+// used during show list (show one)
 const appendOne = data => {
   const indexOne = showTemplate({list: data.list})
   $('#listDisplay').html(indexOne)
@@ -29,6 +31,7 @@ const error = (err) => {
 }
 
 const showListSuccess = (data) => {
+  // stores current list data in storage, will use for list._id
   Object.assign(store, data)
   appendOne(data)
   $('form').trigger('reset')
@@ -38,6 +41,7 @@ const showListSuccess = (data) => {
 }
 
 const createListSuccess = (singleData) => {
+  // refreshes content after a successful create
   api.indexList()
     .then(data => appendTable(data))
     .catch(error)
@@ -48,6 +52,7 @@ const createListSuccess = (singleData) => {
 }
 
 const updateListSuccess = () => {
+  // refreshes content after a successful update
   api.indexList()
     .then(data => appendTable(data))
     .catch(error)
@@ -58,6 +63,7 @@ const updateListSuccess = () => {
 }
 
 const deleteListSuccess = () => {
+  // refreshes content after a successful delete
   api.indexList()
     .then(data => appendTable(data))
     .catch(error)

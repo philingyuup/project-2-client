@@ -11,11 +11,13 @@
     <tbody>
       {{#each lists as |list|}}
           <tr>
+            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->
             <td class='clickCollapse' data-toggle='collapse' data-target='#{{list._id}}'>{{limit list.name 10}}</td>
             <td>{{list.items.length}}</td>
             <td> <button class='btn showListButton' data-id='{{list._id}}'> Show </button></td>
             <td> <button class='btn deleteButton' data-id='{{list._id}}'> &times; </button></td>
           </tr>
+          <!-- for the js to work, id=[collapser's data-target] -->
           <tr class='hiddenRow collapse' id='{{list._id}}'>
             <td colspan='4'><div> Full Name: {{list.name}} </div> </td>
           </tr>

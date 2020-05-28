@@ -10,10 +10,12 @@
     <tbody>
       {{#each list.items as |item|}}
           <tr>
+            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->
             <td class='clickCollapse' data-toggle='collapse' data-target='#{{item._id}}'>{{item.name}}</td>
             <td>{{item.quantity}}</td>
             <td><button data-id='{{item._id}}' data-quantity='{{item.quantity}}' class='btn reduceOneButton'>-1</button></td>
           </tr>
+          <!-- for the js to work, id=[collapser's data-target] -->
           <tr class='hiddenRow collapse' id='{{item._id}}'>
             <td colspan='2'>
               <form id='update-item' data-id='{{item._id}}'>
