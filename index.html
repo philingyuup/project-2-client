@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FridgePal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap');
+    </style>
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">
+        <h1>FridgePal</h1>
+      </a>
+      <button class="navbar-toggler navButton unauthenticated" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img id='small-logo' src='./public/FridgePal-BlankIcon.png' alt='FridgePalLogo'>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a id='items-link' class="nav-link unauthenticated" href="#items">Items</a>
+          </li>
+          <li class="nav-item active">
+            <a id='lists-link' class="nav-link unauthenticated" href="#lists">Lists</a>
+          </li>
+          <li class="nav-item">
+            <a id='settings-link' class="nav-link unauthenticated" href="#settings">Settings</a>
+          </li>
+          <li class='nav-item'>
+            <a href='#' class='nav-link unauthenticated' id='sign-out'> Sign Out </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div id='message'></div>
+      <div id='listDisplay'></div>
+      <div id='sign-in-section'>
+        <h3> Sign-In </h3>
+          <form id='sign-in'>
+            <input required class='col-6' type='text' name='credentials[email]' placeholder='email'>
+            <input required class='col-6' type='password' name='credentials[password]' placeholder='password'>
+            <br>
+            <button class='btn' type='submit'> Sign In </button>
+            <button class='btn' type='button' data-toggle='modal' data-target='#signUpModal'> Sign Up </button>
+            <small class="form-text text-muted">No Account? Signup for free!</small>
+          </form>
+      </div>
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form id="sign-up">
+              <div class="modal-body">
+                <input required class='col' aria-describedby="emailHelp" name="credentials[email]" type="text" placeholder="you@example.com">
+                <small id="emailHelp" class="form-text text-muted">Please don't use a real email!</small>
+                <input required class='col' aria-describedby="passwordHelp" name="credentials[password]" type="password" placeholder="password">
+                <small id="passwordHelp" class="form-text text-muted">Please don't use a real password!</small>
+                <input required class='col' name="credentials[password_confirmation]" type="password" placeholder="confirm password">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn">Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class='unauthenticated' id='settings'>
+        <h3> Change Password </h3>
+          <form id='change-password'>
+            <input required class='col-6' type='password' name='passwords[old]' placeholder='old password'>
+            <input required class='col-6' type='password' name='passwords[new]' placeholder='new password'>
+            <br>
+            <button class='btn' type='submit'> Change Password </button>
+          </form>
+      </div>
+      <div class='unauthenticated' id='items'>
+        <button class='btn' id='index-item'> List All Items </button>
+        <div data-id='show-item'>
+          <h3> Show Item </h3>
+          <form id='show-item'>
+            <input required type='text' name='item[name]' placeholder='name'>
+            <br>
+            <button class='btn' type='submit'> Find Item </button>
+          </form>
+        </div>
+      </div>
+      <div class='unauthenticated' id='lists'>
+        <div data-id='list-options'>
+          <button class='btn' id='index-list'> Show All Lists </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
