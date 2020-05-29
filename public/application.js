@@ -17732,19 +17732,19 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "        <tr>\n          <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n          <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "        <tr>\r\n          <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\r\n          <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + "</td>\n          <td>"
+    + "</td>\r\n          <td>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "</td>\n          <td><button class='btn showListButton' data-id='"
+    + "</td>\r\n          <td><button class='btn showListButton' data-id='"
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"list") : stack1)) != null ? lookupProperty(stack1,"id") : stack1), depth0))
-    + "'> List </button></td>\n        </tr>\n        <!-- for the js to work, id=[collapser's data-target] -->\n        <tr class='hiddenRow collapse' id='"
+    + "'> List </button></td>\r\n        </tr>\r\n        <!-- for the js to work, id=[collapser's data-target] -->\r\n        <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\n          <td colspan='3'><div > List: "
+    + "'>\r\n          <td colspan='3'><div > List: "
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"list") : stack1)) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </div> </td>\n        </tr>\n";
+    + " </div> </td>\r\n        </tr>\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -17753,9 +17753,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "<h3 class='singleListHeader'> Items </h3>\n  <table class=\"table\" id='tableContent'>\n    <thead>\n      <tr>\n        <th class='col-4'>Name</th>\n        <th class='col-3'>Qty#</th>\n        <th class='col-3'></th>\n      </tr>\n    </thead>\n    <tbody>\n"
+  return "<h3 class='singleListHeader'> Items </h3>\r\n  <table class=\"table\" id='tableContent'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Name</th>\r\n        <th class='col-3'>Qty#</th>\r\n        <th class='col-3'></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"items") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":22,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\n  </table>\n";
+    + "    </tbody>\r\n  </table>\r\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
@@ -18736,21 +18736,21 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "          <tr>\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "          <tr>\r\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\r\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(__default(__webpack_require__(373)).call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1),10,{"name":"limit","hash":{},"data":data,"blockParams":blockParams,"loc":{"start":{"line":15,"column":89},"end":{"line":15,"column":111}}}))
-    + "</td>\n            <td>"
+    + "</td>\r\n            <td>"
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"items") : stack1)) != null ? lookupProperty(stack1,"length") : stack1), depth0))
-    + "</td>\n            <td> <button class='btn showListButton' data-id='"
+    + "</td>\r\n            <td> <button class='btn showListButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> Show </button></td>\n            <td> <button class='btn deleteButton' data-id='"
+    + "'> Show </button></td>\r\n            <td> <button class='btn deleteButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> &times; </button></td>\n          </tr>\n          <!-- for the js to work, id=[collapser's data-target] -->\n          <tr class='hiddenRow collapse' id='"
+    + "'> &times; </button></td>\r\n          </tr>\r\n          <!-- for the js to work, id=[collapser's data-target] -->\r\n          <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\n            <td colspan='4'><div> Full Name: "
+    + "'>\r\n            <td colspan='4'><div> Full Name: "
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </div> </td>\n          </tr>\n";
+    + " </div> </td>\r\n          </tr>\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -18759,9 +18759,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "<h3 class='singleListHeader'> All Lists </h3>\n  <table class=\"table\" id='listTable'>\n    <thead>\n      <tr>\n        <th class='col-4'>Name</th>\n        <th class='col-3'>Items#</th>\n        <th class='col'> </th>\n        <th class='col'> </th>\n      </tr>\n    </thead>\n    <tbody>\n"
+  return "<h3 class='singleListHeader'> All Lists </h3>\r\n  <table class=\"table\" id='listTable'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Name</th>\r\n        <th class='col-3'>Items#</th>\r\n        <th class='col'> </th>\r\n        <th class='col'> </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"lists") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":12,"column":6},"end":{"line":24,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\n  </table>\n  <h3> Create List </h3>\n  <form id='create-list'>\n    <input required type='text' name='list[name]' placeholder='name'>\n    <br>\n    <button class='btn' type='submit'> Create List </button>\n  </form>\n";
+    + "    </tbody>\r\n  </table>\r\n  <h3> Create List </h3>\r\n  <form id='create-list'>\r\n    <input required type='text' name='list[name]' placeholder='name'>\r\n    <br>\r\n    <button class='btn' type='submit'> Create List </button>\r\n  </form>\r\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
@@ -18799,23 +18799,23 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "          <tr>\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "          <tr>\r\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\r\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + "</td>\n            <td>"
+    + "</td>\r\n            <td>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "</td>\n            <td><button data-id='"
+    + "</td>\r\n            <td><button data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "' data-quantity='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "' class='btn reduceOneButton'>-1</button></td>\n          </tr>\n          <!-- for the js to work, id=[collapser's data-target] -->\n          <tr class='hiddenRow collapse' id='"
+    + "' class='btn reduceOneButton'>-1</button></td>\r\n          </tr>\r\n          <!-- for the js to work, id=[collapser's data-target] -->\r\n          <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\n            <td colspan='2'>\n              <form id='update-item' data-id='"
+    + "'>\r\n            <td colspan='2'>\r\n              <form id='update-item' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\n                <input type='number' name='item[quantity]' placeholder='qty (default: 1)'>\n                <button class='btn' type='submit'> Update # </button>\n              </form>\n            </td>\n            <td colspan='1'>\n              <button class='btn deleteItemButton' data-id='"
+    + "'>\r\n                <input type='number' name='item[quantity]' placeholder='qty (default: 1)'>\r\n                <button class='btn' type='submit'> Update # </button>\r\n              </form>\r\n            </td>\r\n            <td colspan='1'>\r\n              <button class='btn deleteItemButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> &times; </button>\n            </td>\n          </tr>\n";
+    + "'> &times; </button>\r\n            </td>\r\n          </tr>\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -18826,9 +18826,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
   return "<h3 class='singleListHeader'> "
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? lookupProperty(depth0,"list") : depth0)) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </h3>\n  <table class=\"table\" id='listOneTable'>\n    <thead>\n      <tr>\n        <th class='col-4'>Item Name</th>\n        <th class='col-3'>Qty#</th>\n        <th class='col'> </th>\n      </tr>\n    </thead>\n    <tbody>\n"
+    + " </h3>\r\n  <table class=\"table\" id='listOneTable'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Item Name</th>\r\n        <th class='col-3'>Qty#</th>\r\n        <th class='col'> </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? lookupProperty(depth0,"list") : depth0)) != null ? lookupProperty(stack1,"items") : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":30,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\n  </table>\n  <h3> Create Item </h3>\n    <form id='create-item'>\n      <input required type='text' name='item[name]' placeholder='name'>\n      <input type='number' name='item[quantity]' placeholder='quantity (default: 1)'>\n      <br>\n      <button class='btn' type='submit'> Create Item </button>\n    </form>\n";
+    + "    </tbody>\r\n  </table>\r\n  <h3> Create Item </h3>\r\n    <form id='create-item'>\r\n      <input required type='text' name='item[name]' placeholder='name'>\r\n      <input type='number' name='item[quantity]' placeholder='quantity (default: 1)'>\r\n      <br>\r\n      <button class='btn' type='submit'> Create Item </button>\r\n    </form>\r\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
