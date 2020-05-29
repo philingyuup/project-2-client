@@ -52,7 +52,7 @@ user stories for this project.
 | user   | my things to belong to me ONLY |
 
 ### Wireframe
-![Wireframe]('/public/Project-2-Wireframe.jpg' "FridgePal Client Wireframe")
+![Wireframe](https://github.com/philingyuup/project-2-client/raw/master/public/Project-2-Wireframe.jpg "FridgePal Client Wireframe")
 
 ### Progression
 I started this client after the backend API. The first steps were to build out the base HTML with a nav. I took a little time to create the fridge icon used for the nav bar I then worked on the client API logic and authorization with the necessary form and buttons. I did some of the styling afterwards and got the nav drop down to work. Afterwards I used handlebar for the table and spent a good amount of time trying to get accordions to work. Finally finished it off by moving buttons and forms around to simplify the functionality of the app.
