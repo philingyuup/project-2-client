@@ -4234,6 +4234,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 var indexTemplate = __webpack_require__(356);
 // const api = require('./api.js')
 
+// used for index items (show all)
 var appendTable = function appendTable(data) {
   var indexItems = indexTemplate({ items: data.items });
   $('#listDisplay').html(indexItems);
@@ -4253,6 +4254,7 @@ var error = function error(err) {
 };
 
 var showItemSuccess = function showItemSuccess(data) {
+  // show item (show one)
   appendTable(data);
   $('form').trigger('reset');
   $('#message').text('Show Item Success');
@@ -4694,11 +4696,13 @@ var indexTemplate = __webpack_require__(372);
 var showTemplate = __webpack_require__(374);
 var api = __webpack_require__(101);
 
+// used during index list
 var appendTable = function appendTable(data) {
   var indexLists = indexTemplate({ lists: data.lists });
   $('#listDisplay').html(indexLists);
 };
 
+// used during show list (show one)
 var appendOne = function appendOne(data) {
   var indexOne = showTemplate({ list: data.list });
   $('#listDisplay').html(indexOne);
@@ -4718,6 +4722,7 @@ var error = function error(err) {
 };
 
 var showListSuccess = function showListSuccess(data) {
+  // stores current list data in storage, will use for list._id
   Object.assign(store, data);
   appendOne(data);
   $('form').trigger('reset');
@@ -4727,6 +4732,7 @@ var showListSuccess = function showListSuccess(data) {
 };
 
 var createListSuccess = function createListSuccess(singleData) {
+  // refreshes content after a successful create
   api.indexList().then(function (data) {
     return appendTable(data);
   }).catch(error);
@@ -4737,6 +4743,7 @@ var createListSuccess = function createListSuccess(singleData) {
 };
 
 var updateListSuccess = function updateListSuccess() {
+  // refreshes content after a successful update
   api.indexList().then(function (data) {
     return appendTable(data);
   }).catch(error);
@@ -4747,6 +4754,7 @@ var updateListSuccess = function updateListSuccess() {
 };
 
 var deleteListSuccess = function deleteListSuccess() {
+  // refreshes content after a successful delete
   api.indexList().then(function (data) {
     return appendTable(data);
   }).catch(error);
@@ -17454,6 +17462,7 @@ var signOut = function signOut(event) {
   api.signOut().then(ui.signOutSuccess).catch(ui.error);
 };
 
+// ensures my navbar only has one active link at a time
 var oneActive = function oneActive() {
   $('#listDisplay').html('');
   $('#settings').show();
@@ -17465,6 +17474,7 @@ var oneActive = function oneActive() {
 var addHandlers = function addHandlers() {
   $('#sign-up').on('submit', signUp);
   $('#sign-in').on('submit', signIn);
+  // event delegation for handlebar bubbling
   $('#change-password').on('submit', changePassword);
   $('#sign-out').on('click', signOut);
   $('#settings-link').on('click', oneActive);
@@ -17554,6 +17564,7 @@ var error = function error(err) {
 };
 
 var signInSuccess = function signInSuccess(data) {
+  // stores log in data (especially token) in local js
   Object.assign(store, data);
   $('form').trigger('reset');
   $('#message').text('Sign In Success');
@@ -17656,7 +17667,9 @@ var createItem = function createItem(event) {
   event.preventDefault();
   var form = getFormFields(event.target);
   form.item.list = store.list.id;
-  api.createItem(form).then(function (data) {
+  api.createItem(form)
+  // refreshes content after a successful create item
+  .then(function (data) {
     return listApi.showList(data.item.list);
   }).then(listUi.showListSuccess).catch(ui.error);
 };
@@ -17665,18 +17678,23 @@ var updateItem = function updateItem(event) {
   event.preventDefault();
   var form = getFormFields(event.target);
   form.id = $(this).data('id');
-  api.updateItem(form).then(function (data) {
+  api.updateItem(form)
+  // refreshes content after a successful update item
+  .then(function (data) {
     return listApi.showList(store.list.id);
   }).then(listUi.showListSuccess).then(ui.updateItemSuccess).catch(ui.error);
 };
 
 var deleteItem = function deleteItem(event) {
   event.preventDefault();
-  api.deleteItem($(this).data('id')).then(function (data) {
+  api.deleteItem($(this).data('id'))
+  // refreshes content after a successful create item
+  .then(function (data) {
     return listApi.showList(store.list.id);
   }).then(listUi.showListSuccess).then(ui.deleteItemSuccess).catch(ui.error);
 };
 
+// ensures only one active link in navbar
 var oneActive = function oneActive() {
   indexItem();
   $('#items').show();
@@ -17714,19 +17732,19 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "        <tr>\r\n          <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "        <tr>\n          <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n          <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + "</td>\r\n          <td>"
+    + "</td>\n          <td>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "</td>\r\n          <td><button class='btn showListButton' data-id='"
+    + "</td>\n          <td><button class='btn showListButton' data-id='"
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"list") : stack1)) != null ? lookupProperty(stack1,"id") : stack1), depth0))
-    + "'> List </button></td>\r\n        </tr>\r\n        <tr class='hiddenRow collapse' id='"
+    + "'> List </button></td>\n        </tr>\n        <!-- for the js to work, id=[collapser's data-target] -->\n        <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\r\n          <td colspan='3'><div > List: "
+    + "'>\n          <td colspan='3'><div > List: "
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"list") : stack1)) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </div> </td>\r\n        </tr>\r\n";
+    + " </div> </td>\n        </tr>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -17735,9 +17753,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "<h3 class='singleListHeader'> Items </h3>\r\n  <table class=\"table\" id='tableContent'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Name</th>\r\n        <th class='col-3'>Qty#</th>\r\n        <th class='col-3'></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
-    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"items") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":20,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\r\n  </table>\r\n";
+  return "<h3 class='singleListHeader'> Items </h3>\n  <table class=\"table\" id='tableContent'>\n    <thead>\n      <tr>\n        <th class='col-4'>Name</th>\n        <th class='col-3'>Qty#</th>\n        <th class='col-3'></th>\n      </tr>\n    </thead>\n    <tbody>\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"items") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":22,"column":15}}})) != null ? stack1 : "")
+    + "    </tbody>\n  </table>\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
@@ -18718,21 +18736,21 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "          <tr>\r\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "          <tr>\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
-    + alias2(__default(__webpack_require__(373)).call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1),10,{"name":"limit","hash":{},"data":data,"blockParams":blockParams,"loc":{"start":{"line":14,"column":89},"end":{"line":14,"column":111}}}))
-    + "</td>\r\n            <td>"
+    + alias2(__default(__webpack_require__(373)).call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1),10,{"name":"limit","hash":{},"data":data,"blockParams":blockParams,"loc":{"start":{"line":15,"column":89},"end":{"line":15,"column":111}}}))
+    + "</td>\n            <td>"
     + alias2(alias1(((stack1 = ((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"items") : stack1)) != null ? lookupProperty(stack1,"length") : stack1), depth0))
-    + "</td>\r\n            <td> <button class='btn showListButton' data-id='"
+    + "</td>\n            <td> <button class='btn showListButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> Show </button></td>\r\n            <td> <button class='btn deleteButton' data-id='"
+    + "'> Show </button></td>\n            <td> <button class='btn deleteButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> &times; </button></td>\r\n          </tr>\r\n          <tr class='hiddenRow collapse' id='"
+    + "'> &times; </button></td>\n          </tr>\n          <!-- for the js to work, id=[collapser's data-target] -->\n          <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\r\n            <td colspan='4'><div> Full Name: "
+    + "'>\n            <td colspan='4'><div> Full Name: "
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </div> </td>\r\n          </tr>\r\n";
+    + " </div> </td>\n          </tr>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -18741,9 +18759,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "<h3 class='singleListHeader'> All Lists </h3>\r\n  <table class=\"table\" id='listTable'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Name</th>\r\n        <th class='col-3'>Items#</th>\r\n        <th class='col'> </th>\r\n        <th class='col'> </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
-    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"lists") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":12,"column":6},"end":{"line":22,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\r\n  </table>\r\n  <h3> Create List </h3>\r\n  <form id='create-list'>\r\n    <input required type='text' name='list[name]' placeholder='name'>\r\n    <br>\r\n    <button class='btn' type='submit'> Create List </button>\r\n  </form>\r\n";
+  return "<h3 class='singleListHeader'> All Lists </h3>\n  <table class=\"table\" id='listTable'>\n    <thead>\n      <tr>\n        <th class='col-4'>Name</th>\n        <th class='col-3'>Items#</th>\n        <th class='col'> </th>\n        <th class='col'> </th>\n      </tr>\n    </thead>\n    <tbody>\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"lists") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":12,"column":6},"end":{"line":24,"column":15}}})) != null ? stack1 : "")
+    + "    </tbody>\n  </table>\n  <h3> Create List </h3>\n  <form id='create-list'>\n    <input required type='text' name='list[name]' placeholder='name'>\n    <br>\n    <button class='btn' type='submit'> Create List </button>\n  </form>\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
@@ -18781,23 +18799,23 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
         return undefined
     };
 
-  return "          <tr>\r\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
+  return "          <tr>\n            <!-- for the js to work, data-toggle='collapse' and data-target=[collapsee's id] -->\n            <td class='clickCollapse' data-toggle='collapse' data-target='#"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "'>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + "</td>\r\n            <td>"
+    + "</td>\n            <td>"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "</td>\r\n            <td><button data-id='"
+    + "</td>\n            <td><button data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
     + "' data-quantity='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"quantity") : stack1), depth0))
-    + "' class='btn reduceOneButton'>-1</button></td>\r\n          </tr>\r\n          <tr class='hiddenRow collapse' id='"
+    + "' class='btn reduceOneButton'>-1</button></td>\n          </tr>\n          <!-- for the js to work, id=[collapser's data-target] -->\n          <tr class='hiddenRow collapse' id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\r\n            <td colspan='2'>\r\n              <form id='update-item' data-id='"
+    + "'>\n            <td colspan='2'>\n              <form id='update-item' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'>\r\n                <input type='number' name='item[quantity]' placeholder='qty (default: 1)'>\r\n                <button class='btn' type='submit'> Update # </button>\r\n              </form>\r\n            </td>\r\n            <td colspan='1'>\r\n              <button class='btn deleteItemButton' data-id='"
+    + "'>\n                <input type='number' name='item[quantity]' placeholder='qty (default: 1)'>\n                <button class='btn' type='submit'> Update # </button>\n              </form>\n            </td>\n            <td colspan='1'>\n              <button class='btn deleteItemButton' data-id='"
     + alias2(alias1(((stack1 = blockParams[0][0]) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
-    + "'> &times; </button>\r\n            </td>\r\n          </tr>\r\n";
+    + "'> &times; </button>\n            </td>\n          </tr>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -18808,9 +18826,9 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 
   return "<h3 class='singleListHeader'> "
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? lookupProperty(depth0,"list") : depth0)) != null ? lookupProperty(stack1,"name") : stack1), depth0))
-    + " </h3>\r\n  <table class=\"table\" id='listOneTable'>\r\n    <thead>\r\n      <tr>\r\n        <th class='col-4'>Item Name</th>\r\n        <th class='col-3'>Qty#</th>\r\n        <th class='col'> </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n"
-    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? lookupProperty(depth0,"list") : depth0)) != null ? lookupProperty(stack1,"items") : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":28,"column":15}}})) != null ? stack1 : "")
-    + "    </tbody>\r\n  </table>\r\n  <h3> Create Item </h3>\r\n    <form id='create-item'>\r\n      <input required type='text' name='item[name]' placeholder='name'>\r\n      <input type='number' name='item[quantity]' placeholder='quantity (default: 1)'>\r\n      <br>\r\n      <button class='btn' type='submit'> Create Item </button>\r\n    </form>\r\n";
+    + " </h3>\n  <table class=\"table\" id='listOneTable'>\n    <thead>\n      <tr>\n        <th class='col-4'>Item Name</th>\n        <th class='col-3'>Qty#</th>\n        <th class='col'> </th>\n      </tr>\n    </thead>\n    <tbody>\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? lookupProperty(depth0,"list") : depth0)) != null ? lookupProperty(stack1,"items") : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":11,"column":6},"end":{"line":30,"column":15}}})) != null ? stack1 : "")
+    + "    </tbody>\n  </table>\n  <h3> Create Item </h3>\n    <form id='create-item'>\n      <input required type='text' name='item[name]' placeholder='name'>\n      <input type='number' name='item[quantity]' placeholder='quantity (default: 1)'>\n      <br>\n      <button class='btn' type='submit'> Create Item </button>\n    </form>\n";
 },"useData":true,"useBlockParams":true});
 
 /***/ }),
@@ -18827,33 +18845,39 @@ var getFormFields = __webpack_require__(99);
 var itemApi = __webpack_require__(143);
 var itemUi = __webpack_require__(138);
 
+// show all
 var indexList = function indexList() {
   event.preventDefault();
   api.indexList().then(ui.indexListSuccess).catch(ui.error);
 };
 
+// show one
 var showList = function showList(event) {
   event.preventDefault();
   oneActive();
   api.showList($(this).data('id')).then(ui.showListSuccess).catch(ui.error);
 };
 
+// makes a new list
 var createList = function createList(event) {
   event.preventDefault();
   var form = getFormFields(event.target);
   api.createList(form).then(ui.createListSuccess).catch(ui.error);
 };
 
+// updates list
 var updateList = function updateList(event) {
   event.preventDefault();
   var form = getFormFields(event.target);
   api.updateList(form).then(ui.updateListSuccess).catch(ui.error);
 };
 
+// deletes list
 var deleteList = function deleteList(event) {
   api.deleteList($(this).data('id')).then(ui.deleteListSuccess).catch(ui.error);
 };
 
+// ensures my navbar only has one active link at a time
 var oneActive = function oneActive() {
   indexList();
   $('#lists').show();
@@ -18862,16 +18886,18 @@ var oneActive = function oneActive() {
   $('.navbar-collapse').removeClass('show');
 };
 
+// makes a hardcoded call to API to update product quantity by minus one.
 var reduceOne = function reduceOne(event) {
   event.preventDefault();
   var num = $(this).data('quantity');
+  // hard code for minus one on a certain quantity
   var data = {
     'id': $(this).data('id'),
     'item': {
       'quantity': num - 1
     }
-  };
-  if (num > 0) {
+    // condition check to see if we are reducing an item quantity past 0
+  };if (num > 0) {
     itemApi.updateItem(data).then(function () {
       return api.showList(store.list.id);
     }).then(function (data) {
@@ -18884,6 +18910,7 @@ var reduceOne = function reduceOne(event) {
   }
 };
 
+// handlebar table collapse feature
 var collapse = function collapse() {
   event.preventDefault();
   $($(this).data('target')).collapse('toggle');
